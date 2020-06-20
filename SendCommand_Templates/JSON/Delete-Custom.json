@@ -1,0 +1,20 @@
+﻿{ "NAME" : "DELETE", "COMMAND" : 
+	{
+		"OPTIMISTIC_LOCK" : "False" ,
+		"RECOVER_RECORD_ID_TYPE" : "CUSTOM" ,
+		"CUSTOM_VARS" : "" ,
+		"INPUT_FORMAT" : "JSON" ,
+		"OUTPUT_FORMAT" : "JSON" ,
+		"FILE_NAME" : "" ,
+		"RECORDS": [
+		  { 
+			"LKITEMID": "",
+			"ORIGINAL_RECORD": ""
+		  },
+		  { 
+			"LKITEMID": "",
+			"ORIGINAL_RECORD": ""
+		  }
+		]
+	}
+}

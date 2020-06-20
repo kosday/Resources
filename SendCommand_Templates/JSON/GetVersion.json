@@ -1,0 +1,5 @@
+﻿{ "NAME" : "GETVERSION", "COMMAND" :
+	{ 
+		"OUTPUT_FORMAT" : "JSON"
+	}
+}

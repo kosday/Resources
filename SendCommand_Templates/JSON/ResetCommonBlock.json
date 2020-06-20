@@ -1,0 +1,5 @@
+﻿{ "NAME" : "RESETCOMMONBLOCK", "COMMAND" :
+	{ 
+		"OUTPUT_FORMAT" : "JSON"
+	}
+}
