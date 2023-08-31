@@ -1,0 +1,23 @@
+﻿{ "NAME" : "NEW", "COMMAND" : 
+	{
+		"READ_AFTER" : "False" ,
+		"CALCULATED" : "False" ,
+		"CONVERSION" : "False" ,
+		"FORMAT_SPEC" : "False" ,
+		"ORIGINAL_RECORDS" : "False" ,
+		"NEW_RECORD_ID_TYPE" : "LINKAR" ,
+		"NEW_RECORD_ID_FORMAT_SPEC" : "" ,
+		"NEW_RECORD_ID_PREFIX" : "" ,
+		"NEW_RECORD_ID_SEPARATOR" : "" ,
+		"CUSTOM_VARS" : "" ,
+		"INPUT_FORMAT" : "JSON" ,
+		"OUTPUT_FORMAT" : "JSON" ,
+		"FILE_NAME" : "" ,
+		"RECORDS":
+		[
+		  {
+			"LKITEMID": ""
+		  }
+		]  
+	}
+}

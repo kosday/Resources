@@ -1,0 +1,292 @@
+      **[UD]$BASICTYPE "P"
+      **[D3]          $OPTIONS EXT
+      **[RT]          $OPTIONS EXT
+      PRINT "Path LKsendcommand.exe   ":;INPUT path
+      PRINT "linkar Host              ":;INPUT host
+      PRINT "EntryPoint               ":;INPUT entrypoint
+      PRINT "EntryPoint Port          ":;INPUT epport
+      PRINT "Linkar USer              ":;INPUT user
+      PRINT "Password                 ":;INPUT pass
+      PRINT "Language                 ":;INPUT lang
+      PRINT "Free Text                ":;INPUT freetext
+      PRINT
+      PRINT "Encoding CodePage        ":;INPUT encoding;*1252 WESTERN EUROPE
+      PRINT "CustomVar string         ":;INPUT customvar
+      PRINT "Pause for each Command <Y> ":;INPUT TIMEPAUSE
+      TIMEPAUSE=OCONV(TIMEPAUSE,"MCU")
+
+      **[IQM],**[IUV],**[IUD],**[IJB],**[ID3]
+      IF path='' THEN path=@PATH
+      **[FQM],**[FUV],**[FUD],**[FJB],**[FD3]
+      **[RT]IF path='' THEN path=SYSTEM(68) ;*?
+
+      IF host='' THEN ABORT
+      IF entrypoint='' THEN ABORT
+      IF epport='' THEN ABORT
+      IF user='' THEN ABORT
+      IF pass='' THEN ABORT
+
+      DIM COMMANDS(30)
+      MAT COMMANDS = ""
+      COMMANDS.LIST=''
+      POSNUM=0
+      *
+      POSNUM+=1
+      COMMANDS.LIST<1,POSNUM>="Conversion"
+      COMMANDS(POSNUM)=\<COMMAND NAME='CONVERSION'>\
+      COMMANDS(POSNUM):=\  <TYPE>OCONV</TYPE>\
+      COMMANDS(POSNUM):=\  <CODE>D2-</CODE>\
+      COMMANDS(POSNUM):=\  <EXPRESSIONS>12222</EXPRESSIONS>\
+      COMMANDS(POSNUM):=\  <CUSTOM_VARS>\:customvar:\</CUSTOM_VARS>\
+      COMMANDS(POSNUM):=\  <OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\
+      COMMANDS(POSNUM):=\</COMMAND>\
+      *
+      POSNUM+=1
+      COMMANDS.LIST<1,POSNUM>="Format"
+      COMMANDS(POSNUM)=\<COMMAND NAME='FORMAT'>\
+      COMMANDS(POSNUM):=\  <FORMAT_SPEC>R#10</FORMAT_SPEC>\
+      COMMANDS(POSNUM):=\  <EXPRESSIONS>1</EXPRESSIONS>\
+      COMMANDS(POSNUM):=\  <CUSTOM_VARS></CUSTOM_VARS>\
+      COMMANDS(POSNUM):=\  <OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\
+      COMMANDS(POSNUM):=\</COMMAND>\
+      *
+      POSNUM+=1
+      COMMANDS.LIST<1,POSNUM>="Execute WHO"
+      COMMANDS(POSNUM)=\<COMMAND NAME='EXECUTE'>\
+      COMMANDS(POSNUM):=\  <STATEMENT>WHO</STATEMENT>\
+      COMMANDS(POSNUM):=\  <CUSTOM_VARS>\:customvar:\</CUSTOM_VARS>\
+      COMMANDS(POSNUM):=\  <OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\
+      COMMANDS(POSNUM):=\</COMMAND>\
+      *
+      POSNUM+=1
+      COMMANDS.LIST<1,POSNUM>="Subroutine SUB.DEMOLINKAR"
+      COMMANDS(POSNUM)=\<COMMAND NAME='SUBROUTINE'>\
+      COMMANDS(POSNUM):=\  <SUBROUTINE_NAME>SUB.DEMOLINKAR</SUBROUTINE_NAME>\
+      COMMANDS(POSNUM):=\  <NUMBER_OF_ARGUMENTS>3</NUMBER_OF_ARGUMENTS>\
+      COMMANDS(POSNUM):=\  <ARGUMENTS>\
+      COMMANDS(POSNUM):=\    <ARGUMENT>0</ARGUMENT>\
+      COMMANDS(POSNUM):=\    <ARGUMENT>%LINKAR.RECORD.SESSION%</ARGUMENT>\
+      COMMANDS(POSNUM):=\    <ARGUMENT></ARGUMENT>\
+      COMMANDS(POSNUM):=\  </ARGUMENTS>\
+      COMMANDS(POSNUM):=\  <CUSTOM_VARS>\:customvar:\</CUSTOM_VARS>\
+      COMMANDS(POSNUM):=\  <OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\
+      COMMANDS(POSNUM):=\</COMMAND>\
+      *
+      POSNUM+=1
+      COMMANDS.LIST<1,POSNUM>="Dictionaries LK.CUSTOMERS File"
+      COMMANDS(POSNUM)=\<COMMAND NAME='DICTIONARIES'>\
+      COMMANDS(POSNUM):=\  <FILE_NAME>LK.CUSTOMERS</FILE_NAME>\
+      COMMANDS(POSNUM):=\  <CUSTOM_VARS>\:customvar:\</CUSTOM_VARS>\
+      COMMANDS(POSNUM):=\  <OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\
+      COMMANDS(POSNUM):=\</COMMAND>\
+      *
+      POSNUM+=1
+      COMMANDS.LIST<1,POSNUM>="Read two items, with Calculated"
+      COMMANDS(POSNUM)=\<COMMAND NAME='READ'>\
+      COMMANDS(POSNUM):=\  <CALCULATED>True</CALCULATED>\
+      COMMANDS(POSNUM):=\  <CONVERSION>False</CONVERSION>\
+      COMMANDS(POSNUM):=\  <FORMAT_SPEC>False</FORMAT_SPEC>\
+      COMMANDS(POSNUM):=\  <ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>\
+      COMMANDS(POSNUM):=\  <CUSTOM_VARS>\:customvar:\</CUSTOM_VARS>\
+      COMMANDS(POSNUM):=\  <OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\
+      COMMANDS(POSNUM):=\  <FILE_NAME>LK.ORDERS</FILE_NAME>\
+      COMMANDS(POSNUM):=\  <RECORDS>\
+      COMMANDS(POSNUM):=\    <RECORD>\      
+      COMMANDS(POSNUM):=\         <LKITEMID>1</LKITEMID>\
+      COMMANDS(POSNUM):=\    </RECORD>\     
+      COMMANDS(POSNUM):=\    <RECORD>\             
+      COMMANDS(POSNUM):=\         <LKITEMID>2</LKITEMID>\
+      COMMANDS(POSNUM):=\    </RECORD>\           
+      COMMANDS(POSNUM):=\  </RECORDS>\
+      COMMANDS(POSNUM):=\  <DICT_CLAUSE></DICT_CLAUSE>\
+      COMMANDS(POSNUM):=\</COMMAND>\
+*
+      POSNUM+=1
+      COMMANDS.LIST<1,POSNUM>="Select Only Record Ids"
+      COMMANDS(POSNUM)=\<COMMAND NAME='SELECT'>\
+      COMMANDS(POSNUM):=\  <CALCULATED>False</CALCULATED>\
+      COMMANDS(POSNUM):=\  <CONVERSION>False</CONVERSION>\
+      COMMANDS(POSNUM):=\  <FORMAT_SPEC>False</FORMAT_SPEC>\
+      COMMANDS(POSNUM):=\  <ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>\
+      COMMANDS(POSNUM):=\  <ONLY_RECORD_ID>True</ONLY_RECORD_ID>\
+      COMMANDS(POSNUM):=\  <PAGINATION>False</PAGINATION>\
+      COMMANDS(POSNUM):=\  <PAGE_NUMBER>1</PAGE_NUMBER>\
+      COMMANDS(POSNUM):=\  <RECORDS_FOR_PAGE>10</RECORDS_FOR_PAGE>\
+      COMMANDS(POSNUM):=\  <CUSTOM_VARS>\:customvar:\</CUSTOM_VARS>\
+      COMMANDS(POSNUM):=\  <OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\
+      COMMANDS(POSNUM):=\  <FILE_NAME>LK.ORDERS</FILE_NAME>\
+      COMMANDS(POSNUM):=\  <SELECT_CLAUSE></SELECT_CLAUSE>\
+      COMMANDS(POSNUM):=\  <SORT_CLAUSE>BY ID</SORT_CLAUSE>\
+      COMMANDS(POSNUM):=\  <DICT_CLAUSE></DICT_CLAUSE>\
+      COMMANDS(POSNUM):=\  <PRESELECT_CLAUSE></PRESELECT_CLAUSE>\
+      COMMANDS(POSNUM):=\</COMMAND>\
+      *
+      PRINT
+      *
+      **[D3]            UNIXHOST=0
+      **[D3]
+      **[D3]            THISHOST=SYSTEM(38)<1,1>
+      **[D3]            IF THISHOST#2 AND THISHOST#4 THEN
+      **[D3]               ERROR="LKL5 - NOT UNIX OR NT"
+      **[D3]               GO OUT
+      **[D3]            END
+      **[D3]            IF THISHOST=2 THEN UNIXHOST=1
+      *
+      **[RT]            UNIXHOST=0
+      **[RT]
+      **[RT]            THISHOST=SYSTEM(70)
+      **[RT]            IF THISHOST#1 AND THISHOST#2 THEN
+      **[RT]               ERROR="LKL5 - NOT UNIX OR NT"
+      **[RT]               GO OUT
+      **[RT]            END
+      **[RT]            IF THISHOST=1 THEN UNIXHOST=1
+      *      
+      **[MB]            UNIXHOST=0
+
+      **[IQM],**[ID3],**[IUD]
+      SHELL="! " 
+      
+      **[FQM],**[FD3],**[FUD]
+      **[RT]SHELL="SYS "
+      **[JB]SHELL=CHAR(255):"s"
+
+      **[UD]IF INDEX(@PATH,'\',1) THEN WHOST=1 ELSE WHOST=0
+      **[UD]IF WHOST=1 THEN
+      **[JB]IF INDEX(@PATH,'\',1) THEN WHOST=1 ELSE WHOST=0
+      **[JB]IF WHOST=1 THEN
+      **[IQM],**[IUV]
+      WHOST=SYSTEM(91)
+      IF WHOST=1 THEN
+         **[FQM],**[FUV]
+         **[D3]IF UNIXHOST=0 THEN
+         **[RT]IF UNIXHOST=0 THEN
+         **[MB]IF UNIXHOST=0 THEN
+         **WINDOWS
+         SEP="\"
+         MONO=""
+         **[UV]SHELL="DOS /C "
+         **[UV]DELETECMD="DEL"
+         **[UV]SCRIPTNAME="SOFTSCRIPT.CMD"
+         **[JB]SCRIPTNAME="SOFTSCRIPT.CMD"
+         **[JB]DELETECMD="DEL"
+      END ELSE
+         **[UV]SHELL="SH -c "
+         **[UV]DELETECMD="rm"
+         **[UV]SCRIPTNAME="SOFTSCRIPT.sh"
+         **[JB]SCRIPTNAME="SOFTSCRIPT.sh"
+         **[JB]DELETECMD="rm"
+         SEP="/"
+         MONO="mono "
+      END
+      IF path='' THEN SEP=''
+      *
+      FOR MAIN=1 TO POSNUM
+         IF COMMANDS(MAIN)='' ELSE
+
+            **[JB]            OPENSEQ path:SEP:"SCRIPTQUERY" TO F.SCRIPT ELSE
+            **[JB]               CREATE F.SCRIPT ELSE ABORT
+            **[JB]            END
+            **[JB]            WRITESEQ COMMANDS(MAIN) TO F.SCRIPT ELSE ABORT
+            **[JB]            WEOFSEQ F.SCRIPT
+            **[JB]            CLOSESEQ F.SCRIPT
+            **[JB]            QUERY=MONO:path:SEP:"lksendcommand.exe /F:":path:SEP:"SCRIPTQUERY /U:":user:" /W:":pass:" /H:":host:" /P:":epport:" /E:":entrypoint:" /L:":lang:" /T:":freetext:" /O:":path:SEP:"SCRIPTRESULT.XML /M:XML /C:":encoding:" /R"
+            **[JB]            OPENSEQ path:SEP:SCRIPTNAME TO F.SCRIPT ELSE
+            **[JB]               CREATE F.SCRIPT ELSE ABORT
+            **[JB]            END
+            **[JB]            WRITESEQ QUERY TO F.SCRIPT ELSE ABORT
+            **[JB]            WEOFSEQ F.SCRIPT
+            **[JB]            CLOSESEQ F.SCRIPT
+            **[JB]            IF WHOST=1 ELSE
+            **[JB]               EXECUTE SHELL:\ "chmod 777 \:path:SEP:SCRIPTNAME:\"\
+            **[JB]            END
+            **[JB]            RESULT=''
+            **[JB]            EXECUTE SHELL:\ "\:path:SEP:SCRIPTNAME:\"\ CAPTURING NADA
+            **[JB]            EXECUTE SHELL:\"\:DELETECMD:\ \:path:SEP:SCRIPTNAME:\"\
+            **[JB]            EXECUTE SHELL:\"\:DELETECMD:\ \:path:SEP:\SCRIPTQUERY"\
+            **[JB]            OPENPATH path TO F.SCRIPT ELSE ABORT
+            **[JB]            READ RESULT FROM F.SCRIPT,"SCRIPTRESULT.XML" ELSE ABORT
+            **[JB]            CLOSE F.SCRIPT
+            **[JB]            EXECUTE SHELL:\"\:DELETECMD:\ \:path:SEP:\SCRIPTRESULT.XML"\
+            **[JB]            RESULT=LATIN1(RESULT)
+            *
+
+            **[IQM],**[ID3],**[IUD],**[IUV],**[IMB],**[IRT]
+            COMMAND=\"\:COMMANDS(MAIN):\"\ 
+            QUERY=MONO:path:SEP:"lksendcommand.exe /S:":COMMAND:" /U:":user:" /W:":pass:" /H:":host:" /P:":epport:" /E:":entrypoint:" /L:":lang:" /T:":freetext:" /M:XML /C:":encoding:" /R"
+            **[FQM],**[FD3],**[FUD],**[FUV],**[FMB],**[FRT]
+            *
+            **[IQM],**[ID3],**[IUD],**[IMB],**[IRT]
+            EXECUTE SHELL:QUERY CAPTURING RESULT
+            **[FQM],**[FD3],**[FUD],**[FMB],**[FRT]
+            *
+
+            **[UV]OPENSEQ path:SEP:SCRIPTNAME TO F.SCRIPT ELSE
+            **[UV]   CREATE F.SCRIPT ELSE ABORT
+            **[UV]END
+            **[UV]WRITESEQ QUERY TO F.SCRIPT ELSE ABORT
+            **[UV]WEOFSEQ F.SCRIPT
+            **[UV]CLOSESEQ F.SCRIPT
+            **[UV]            IF WHOST=1 ELSE
+            **[UV]            EXECUTE SHELL:\ "chmod 777 \:path:SEP:SCRIPTNAME:\"\
+            **[UV]            END
+            *
+
+            **[UV]EXECUTE SHELL:\ "\:path:SEP:SCRIPTNAME:\"\ CAPTURING RESULT
+            **[UV]EXECUTE SHELL:\ "\:DELETECMD:\ \:path:SEP:SCRIPTNAME:\"\
+
+            GOSUB WRITE.RESULT
+            PRINT
+            IF TIMEPAUSE='Y' THEN
+               PRINT " Press any key to continue ":;INPUT F
+               PRINT
+            END
+         END
+      NEXT MAIN
+      *
+      GO OUT
+      *
+      *
+WRITE.RESULT:
+      PRINT MAIN:".- ":COMMANDS.LIST<1,MAIN>
+      PRINT STR("-",LEN(COMMANDS.LIST<1,MAIN>))
+      IF RESULT[1,6]="ERROR:" THEN
+         PRINT RESULT:" Press any key to continue ":;INPUT F
+         RETURN
+      END
+      THISLIST=FIELD(RESULT,CHAR(28),1)
+      CCO=DCOUNT(THISLIST,@AM)
+      FOR I=1 TO CCO
+         PRINT THISLIST<I>'L#20':
+         BUFFER=FIELD(RESULT,CHAR(28),I)
+         IF THISLIST<I>="ARGUMENTS" THEN
+            PRINT
+            CCDC4=DCOUNT(BUFFER,CHAR(20))
+            FOR DC=1 TO CCDC4
+               PRINT "ARG ":DC:" ":FIELD(BUFFER,CHAR(20),DC)
+            NEXT DC
+         END ELSE
+            TOPRINT=CHANGE(BUFFER,CHAR(30),"|")
+            IF LEN(TOPRINT)>80 THEN
+               **intentionally truncated
+               TOPRINT=TOPRINT[1,80]:" ...truncated... "
+            END
+            IF THISLIST<I>="ERRORS" AND TOPRINT<1>#'' THEN
+               PRINT
+               CCJ=DCOUNT(TOPRINT,@AM)
+               FOR J=1 TO CCJ
+                  PRINT "Error Code       : ":TOPRINT<J,1>
+                  PRINT "Error Description: ":TOPRINT<J,2>
+                  PRINT "Error Itemid     : ":TOPRINT<J,3>
+                  PRINT "-----------------"
+               NEXT J
+               PRINT " Press any key to continue ":;INPUT F
+            END ELSE
+               PRINT TOPRINT
+            END
+         END
+      NEXT I
+      RETURN
+      *
+OUT:
+      STOP
+      END

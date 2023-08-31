@@ -1,0 +1,186 @@
+     SUBROUTINE SUB.LK.MAIN.WS.IDENTITY.RESOURCES(ERROR,ID.METHOD,USERNAME,INFODATA,INDATA,OUTDATA)
+      $OPTIONS EXT
+     *OpenID Connect Core 1.0
+     *https://openid.net/specs/openid-connect-core-1_0.html
+     EQUATE INFODATA.CLIENTID                      TO    1
+     EQUATE INFODATA.IDENTITYRESOURCE              TO    2
+     EQUATE INFODATA.SCOPESREQUESTED               TO    3;* separates by spaces
+     EQUATE INFODATA.URL                           TO    4
+     EQUATE INFODATA.BODY                          TO    5
+     EQUATE CLAIMSTYPES                     TO    1
+     EQUATE CLAIMSVALUESTYPES               TO    2
+     EQUATE CLAIMSVALUES                    TO    3
+     OUTDATA=''
+     ERROR=''
+     INFODATA<INFODATA.SCOPESREQUESTED>=CHANGE(INFODATA<INFODATA.SCOPESREQUESTED>," ",@VM)
+     ** general validations
+     *
+     *if you want, you can force "openid" to be sent in the request.
+     *it will be in INFODATA<INFODATA.SCOPESREQUESTED> variable
+     *
+     *
+     IF INFODATA<INFODATA.CLIENTID>="myclientname" ELSE
+        ERROR="Error. Authentication error in the Client name."
+        RETURN
+     END
+     *
+     IF INFODATA<INFODATA.IDENTITYRESOURCE>="myidentityresourcename" ELSE
+        ERROR="Error. Authentication error in the Identity Resource name."
+        RETURN
+     END
+     *
+     IF USERNAME='' THEN
+        ERROR="Error. Missing user"
+        RETURN
+     END
+     *
+     **
+     BEGIN CASE
+        CASE ID.METHOD="LOGIN"
+           GOSUB METHOD.LOGIN
+        CASE ID.METHOD="GET.USER"
+           GOSUB METHOD.GET.USER
+        CASE ID.METHOD="REGISTER"
+           GOSUB METHOD.REGISTER
+        CASE ID.METHOD="FORGOT.PASS"
+           GOSUB METHOD.FORGOT.PASS
+        CASE ID.METHOD="CHANGE.PASS"
+           GOSUB METHOD.CHANGE.PASS
+        CASE 1
+           ERROR="Error. Invalid Method name"
+     END CASE
+     GO ENDSUBROUTINE
+METHOD.LOGIN:
+     **used to validate Login
+     **Please, don't change this equates, LinkarWS uses it.
+     EQUATE LOGIN.INDATA.PASSWORD                         TO    1
+     EQUATE LOGIN.OUTDATA.USERNAME                        TO    1 ;* Required, it's user logged
+     EQUATE LOGIN.OUTDATA.CLAIMSTYPES                     TO    2
+     EQUATE LOGIN.OUTDATA.CLAIMSVALUESTYPES               TO    3
+     EQUATE LOGIN.OUTDATA.CLAIMSVALUES                    TO    4
+     **input data validation
+     IF INDATA<LOGIN.INDATA.PASSWORD>='' THEN
+        ERROR="Error. Invalid password."
+        RETURN
+     END
+     **your custom code
+     ** Here you must extract from your database the data of the user who is logging in. The code of the user is in the variable USERNAME
+     **
+     OUTDATA<LOGIN.OUTDATA.USERNAME>="Myusername";*the user name
+     GOSUB CLAIMS
+     OUTDATA<LOGIN.OUTDATA.CLAIMSTYPES>=CLAIMS<CLAIMSTYPES>
+     OUTDATA<LOGIN.OUTDATA.CLAIMSVALUESTYPES>=CLAIMS<CLAIMSVALUESTYPES>
+     OUTDATA<LOGIN.OUTDATA.CLAIMSVALUES>=CLAIMS<CLAIMSVALUES>
+     RETURN
+METHOD.GET.USER:
+     *used to get user data, similar to Logim method
+     **Please, don't change this equates, LinkarWS uses it.
+     EQUATE GET.USER.OUTDATA.USERNAME                        TO    1 ;* Required
+     EQUATE GET.USER.OUTDATA.CLAIMSTYPES                     TO    2
+     EQUATE GET.USER.OUTDATA.CLAIMSVALUESTYPES               TO    3
+     EQUATE GET.USER.OUTDATA.CLAIMSVALUES                    TO    4
+     *
+     **input data validation
+     **your custom code
+     ** Here you must extract from your database the data of the user. The code of the user is in the variable USERNAME
+     **
+     OUTDATA<GET.USER.OUTDATA.USERNAME>="myusername";*the user name
+     GOSUB CLAIMS
+     OUTDATA<GET.USER.OUTDATA.CLAIMSTYPES>=CLAIMS<CLAIMSTYPES>
+     OUTDATA<GET.USER.OUTDATA.CLAIMSVALUESTYPES>=CLAIMS<CLAIMSVALUESTYPES>
+     OUTDATA<GET.USER.OUTDATA.CLAIMSVALUES>=CLAIMS<CLAIMSVALUES>
+     RETURN
+METHOD.REGISTER:
+     * used to manage a new user
+     **Please, don't change this equates, LinkarWS uses it.
+     EQUATE REGISTER.INDATA.USERNAME                        TO    1 ;* Required
+     EQUATE REGISTER.INDATA.PASSWORD                        TO    2
+     EQUATE REGISTER.INDATA.CLAIMSTYPES                     TO    3
+     EQUATE REGISTER.INDATA.CLAIMSVALUESTYPES               TO    4
+     EQUATE REGISTER.INDATA.CLAIMSVALUES                    TO    5
+     EQUATE REGISTER.INDATA.REGISTERAUTOMATICALLY           TO    6;* boolean
+     *
+     EQUATE REGISTER.OUTDATA.OK                             TO    1 ;*boolean 1 or 0
+     *
+     **input data validation
+     **your custom code
+     **In INDATA we receive all the data of the new user who wants to register.
+     **Here you have to perform the process of recording a new user in your database.     t
+     **
+     OUTDATA<REGISTER.OUTDATA.OK>=1
+     RETURN
+METHOD.FORGOT.PASS:
+     * used to manage password FORGOT
+     **Please, don't change this equates, LinkarWS uses it.
+     EQUATE FORGOT.PASS.INDATA.NEWPASSWORD                         TO    1
+     *
+     EQUATE FORGOT.PASS.OUTDATA.OK                             TO    1 ;*boolean 1 or 0
+     *
+     **input data validation
+     IF INDATA<FORGOT.PASS.INDATA.NEWPASSWORD>='' THEN
+        ERROR="Error. Missing new password"
+        RETURN
+     END
+     **your custom code
+     OUTDATA<FORGOT.PASS.OUTDATA.OK>=1
+     RETURN
+METHOD.CHANGE.PASS:
+     * used to manage password CHANGE
+     **Please, don't change this equates, LinkarWS uses it.
+     EQUATE CHANGE.PASS.INDATA.NEWPASSWORD                         TO    1
+     EQUATE CHANGE.PASS.INDATA.OLDPASSWORD                         TO    2
+     *
+     EQUATE CHANGE.PASS.OUTDATA.OK                             TO    1 ;*boolean 1 or 0
+     *
+     **input data validation
+     IF INDATA<CHANGE.PASS.INDATA.OLDPASSWORD>='' THEN
+        ERROR="Error. Missing old password"
+        RETURN
+     END
+     IF INDATA<CHANGE.PASS.INDATA.NEWPASSWORD>='' THEN
+        ERROR="Error. Missing new password"
+        RETURN
+     END
+     **your custom code
+     OUTDATA<CHANGE.PASS.OUTDATA.OK>=1
+     RETURN
+ CLAIMS:
+     CLAIMS=''
+     CLAIMS.NUMBER=0
+     *
+     *name, family_name, given_name, middle_name, nickname, preferred_username, profile,
+     *picture, website, gender, birthdate, zoneinfo, locale, and updated_at
+     *
+     CLAIMS.NUMBER+=1
+     CLAIMS<CLAIMSTYPES,CLAIMS.NUMBER>="name"
+     CLAIMS<CLAIMSVALUESTYPES,CLAIMS.NUMBER>="string"
+     CLAIMS<CLAIMSVALUES,CLAIMS.NUMBER>="my name";*BF.SM<SM.NOMBRE>
+     *
+     *email, email_verified
+     *
+     CLAIMS.NUMBER+=1
+     CLAIMS<CLAIMSTYPES,CLAIMS.NUMBER>="email"
+     CLAIMS<CLAIMSVALUESTYPES,CLAIMS.NUMBER>="email"
+     CLAIMS<CLAIMSVALUES,CLAIMS.NUMBER>="myemail@@mydomain.com";*BF.SM<SM.EMAIL>
+     *
+     CLAIMS.NUMBER+=1
+     CLAIMS<CLAIMSTYPES,CLAIMS.NUMBER>="email_verified"
+     CLAIMS<CLAIMSVALUESTYPES,CLAIMS.NUMBER>="boolean"
+     CLAIMS<CLAIMSVALUES,CLAIMS.NUMBER>=1
+     *
+     *street_address, locality, city, region, postal_code, country
+     *phone_number
+     *
+     **your custom code with your own claims
+     **
+     *
+     **scp claim. Required.
+     **the claim scp is mandatory and indicates the different scopes separated by spaces that this user is allowed to run
+     CLAIMS.NUMBER+=1
+     CLAIMS<CLAIMSTYPES,CLAIMS.NUMBER>="scp"
+     CLAIMS<CLAIMSVALUESTYPES,CLAIMS.NUMBER>="string"
+     CLAIMS<CLAIMSVALUES,CLAIMS.NUMBER>="myscope1 myscope2"
+     RETURN
+ENDSUBROUTINE:
+     RETURN
+  END

@@ -1,0 +1,9 @@
+﻿{ "NAME" : "CONVERSION", "COMMAND" : 
+	{ 
+		"TYPE" : "ICONV" ,
+		"CODE" : "" ,
+		"EXPRESSIONS" : "" ,
+		"CUSTOM_VARS" : "" ,
+		"OUTPUT_FORMAT" : "JSON"
+	}
+}
