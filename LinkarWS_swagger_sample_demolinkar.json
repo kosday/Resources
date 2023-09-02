@@ -4729,7 +4729,6 @@
           "200": {
             "description": "Success, Text in capital letters",
             "content": {
-              "application/json": { },
               "text/plain": { }
             }
           },
@@ -7559,5 +7558,17 @@
         "description": "Bad Request"
       }
     },
-  }
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "api_key": [ ]
+    }
+  ]
 }
