@@ -1,0 +1,7563 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Linkar Web Services apidemo",
+    "description": "<html><br><body><br><p>Linkar Web Services is a platform of \"no develop\" REST API services type that allows to expose, through a series of operations or EndPoints, the data coming from one or more Linkar Server EntryPoints.</p><p>LinkarWS does not require to create any service, nor host it in any web server. It is not necessary either to develop BASIC routines to expose the data, unless users want to run their own subroutines.</p> <p>LinkarWS meets OPENID standards and integrates several operation modes that encompass different ways of managing authentication and authorization.<br><b>These modes are:</b></p><ul>  <li><b>None:</b> The API will be totally public.</li> <li><b>ApiKey:</b> By using an ApiKey, the operation is authenticated and authorized. This mode allows it to work in a similar way to previous versions of the Linkar REST API.</li> <li><b>Oauth2.0:</b> Grants authentication and authorization control to LinkarWS using OAuth 2.0 and OpenID standards.</li> <li><b>IdentityServer4:</b> Users will be able to connect an IdentityServer4 identity server with LinkarWS to delegate authentication to the identity server.</li> </ul><br><img src='https://kosday.com/wp-content/uploads/LinkarWS_MULTIAPI-768x568.png'><br> </body><br></html>",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/apidemo/crud/LK.CUSTOMERS/{id}": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Read",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_read.html"
+        },
+        "parameters": [
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      ]
+    },
+    "/api/v1/apidemo/crud/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Select",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_select.html"
+        },
+        "parameters": [
+          {
+            "name": "select_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "preselect_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "only_record_ids",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LK.CUSTOMERS"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LK.CUSTOMERS"
+                  }
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "New",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_new.html"
+        },
+        "parameters": [
+          {
+            "name": "new_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Must be empty, \"Linkar\", \"Random\" or \"Custom\""
+            }
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "separator",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "prefix_format_spec",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "numeric",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "description": "Only for new_id = \"Random\""
+            }
+          },
+          {
+            "name": "length",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "description": "Only for new_id = \"Random\""
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Update",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_update.html"
+        },
+        "parameters": [
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "recordId + FS + record + FS + originalRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Update Partial",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_update_partial.html"
+        },
+        "parameters": [
+          {
+            "name": "dictionaries",
+            "in": "query",
+            "description": "Only for text/plain (MV)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "recordId + FS + record + FS + originalRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Delete",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_delete.html"
+        },
+        "parameters": [
+          {
+            "name": "recover_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Must be empty, \"Linkar\" or \"Custom\""
+            }
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for recover_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "separator",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for recover_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/crud/dict/LK.CUSTOMERS/{id}": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Read",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_read.html"
+        },
+        "parameters": [
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      ]
+    },
+    "/api/v1/apidemo/crud/dict/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Select",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_select.html"
+        },
+        "parameters": [
+          {
+            "name": "select_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "preselect_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "only_record_ids",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "New",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_new.html"
+        },
+        "parameters": [
+          {
+            "name": "new_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Must be empty, \"Linkar\", \"Random\" or \"Custom\""
+            }
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "separator",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "prefix_format_spec",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "numeric",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "description": "Only for new_id = \"Random\""
+            }
+          },
+          {
+            "name": "length",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "description": "Only for new_id = \"Random\""
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Update",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_update.html"
+        },
+        "parameters": [
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "recordId + FS + record + FS + originalRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.DICT"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Update Partial",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_update_partial.html"
+        },
+        "parameters": [
+          {
+            "name": "dictionaries",
+            "in": "query",
+            "description": "Only for text/plain (MV)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "recordId + FS + record + FS + originalRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Delete",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_delete.html"
+        },
+        "parameters": [
+          {
+            "name": "recover_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Must be empty, \"Linkar\" or \"Custom\""
+            }
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for recover_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "separator",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for recover_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/crud/sch/LK.CUSTOMERS/{id}": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Read",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_read.html"
+        },
+        "parameters": [
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      ]
+    },
+    "/api/v1/apidemo/crud/sch/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Select",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_select.html"
+        },
+        "parameters": [
+          {
+            "name": "select_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "preselect_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "only_record_ids",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "New",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_new.html"
+        },
+        "parameters": [
+          {
+            "name": "new_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Must be empty, \"Linkar\", \"Random\" or \"Custom\""
+            }
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "separator",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "prefix_format_spec",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for new_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "numeric",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "description": "Only for new_id = \"Random\""
+            }
+          },
+          {
+            "name": "length",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "description": "Only for new_id = \"Random\""
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Update",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_update.html"
+        },
+        "parameters": [
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "recordId + FS + record + FS + originalRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS.SCH"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Update Partial",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_update_partial.html"
+        },
+        "parameters": [
+          {
+            "name": "dictionaries",
+            "in": "query",
+            "description": "Only for text/plain (MV)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "format_spec",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "original_record",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "recordId + FS + record + FS + originalRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200 Read After": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LK.CUSTOMERS"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Delete",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_delete.html"
+        },
+        "parameters": [
+          {
+            "name": "recover_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Must be empty, \"Linkar\" or \"Custom\""
+            }
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for recover_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "separator",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Only for recover_id = \"Linkar\""
+            }
+          },
+          {
+            "name": "optimistic_locking",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LK.CUSTOMERS"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/crud/Dictionaries/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Dictionaries",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_dictionaries.html"
+        },
+        "parameters": [
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              },
+              "application/xml": {
+                "schema": { }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/crud/LkProperties/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "LkProperties",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_properties.html"
+        },
+        "parameters": [
+          {
+            "name": "row_properties",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "only_visibles",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "use_properties_name",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "row_headers",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LKPROPERTIES"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LKPROPERTIES"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/crud/LkProperties/Dictionaries/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "LkProperties Dictionaries",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_properties.html"
+        },
+        "parameters": [
+          {
+            "name": "row_headers",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LKPROPERTIES"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LKPROPERTIES"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/crud/GetTable/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Get Table",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_gettable.html"
+        },
+        "parameters": [
+          {
+            "name": "select_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "row_properties",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "only_visibles",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "use_properties_name",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "row_headers",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repeat_values",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "apply_conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "apply_format",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GETTABLE"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GETTABLE"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/crud/GetTable/Dictionaries/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Get Table Dictionaries",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_gettable.html"
+        },
+        "parameters": [
+          {
+            "name": "select_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "row_headers",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repeat_values",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "calculated",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "apply_conversion",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "apply_format",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GETTABLE"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GETTABLE"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/crud/GetTable/None/LK.CUSTOMERS": {
+      "get": {
+        "tags": [
+          "CRUD File LK.CUSTOMERS"
+        ],
+        "summary": "Get Table None",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_gettable.html"
+        },
+        "parameters": [
+          {
+            "name": "select_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dict_clause",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "row_headers",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repeat_values",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GETTABLE"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GETTABLE"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/Subroutine/{name}": {
+      "post": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Subroutine",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_runsubroutine.html"
+        },
+        "parameters": [
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "ARGUMENTS": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "ARGUMENT": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "properties": {
+                  "ARGUMENTS": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "ARGUMENT": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              },
+              "application/xml": {
+                "schema": { }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "name",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Subroutine name",
+            "nullable": true
+          }
+        }
+      ]
+    },
+    "/api/v1/apidemo/Execute/{statement}": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Execute",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_execute.html"
+        },
+        "parameters": [
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EXECUTE"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/EXECUTE"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "statement",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Execute statement",
+            "nullable": true
+          }
+        }
+      ]
+    },
+    "/api/v1/apidemo/Conversion/input/{code}/{expression}": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Input Conversion",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_conversion.html"
+        },
+        "parameters": [
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CONVERSION"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CONVERSION"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "code",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Conversion code",
+            "nullable": true
+          }
+        },
+        {
+          "name": "expression",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Conversion expression",
+            "nullable": true
+          }
+        }
+      ]
+    },
+    "/api/v1/apidemo/Conversion/output/{code}/{expression}": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Output Conversion",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_conversion.html"
+        },
+        "parameters": [
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CONVERSION"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CONVERSION"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "code",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Conversion code",
+            "nullable": true
+          }
+        },
+        {
+          "name": "expression",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Conversion expression",
+            "nullable": true
+          }
+        }
+      ]
+    },
+    "/api/v1/apidemo/Format/{format}/{expression}": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Format",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_format.html"
+        },
+        "parameters": [
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FORMAT"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/FORMAT"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "format",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Format spec",
+            "nullable": true
+          }
+        },
+        {
+          "name": "expression",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Format expression",
+            "nullable": true
+          }
+        }
+      ]
+    },
+    "/api/v1/apidemo/GetVersion": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Get Version",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_getversion.html"
+        },
+        "parameters": [
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GETVERSION"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GETVERSION"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/LkSchemas": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "LkSchemas",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_schemas.html"
+        },
+        "parameters": [
+          {
+            "name": "row_properties",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "only_visibles",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "row_headers",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LKSCHEMAS"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LKSCHEMAS"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/LkSchemas/Dictionaries": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "LkSchemas Dictionaries",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_schemas.html"
+        },
+        "parameters": [
+          {
+            "name": "row_headers",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reg_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "num_page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LKSCHEMAS_DICTIONARIES"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LKSCHEMAS_DICTIONARIES"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/ResetCommonBlocks": {
+      "get": {
+        "tags": [
+          "Functions"
+        ],
+        "summary": "Reset Common Blocks",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_resetcommonblocks.html"
+        },
+        "parameters": [
+          {
+            "name": "custom_vars",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "svr_timeout",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RESETCOMMONBLOCKS"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/RESETCOMMONBLOCKS"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Read": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Read Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKREADCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKREADCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Update": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Update Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKUPDATECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKUPDATECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/UpdatePartial": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Update Partial Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKUPDATEPARTIALCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKUPDATEPARTIALCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/New": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "New Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKNEWCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKNEWCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/NewLinkar": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "New Linkar Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKNEWLINKARCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKNEWLINKARCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/NewRandom": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "New Random Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKNEWRANDOMCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKNEWRANDOMCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/NewCustom": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "New Custom Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKNEWCUSTOMCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKNEWCUSTOMCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Delete": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Delete Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKDELETECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKDELETECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/DeleteLinkar": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Delete Linkar Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKDELETELINKARCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKDELETELINKARCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/DeleteCustom": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Delete Custom Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKDELETECUSTOMCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKDELETECUSTOMCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Select": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Select Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSELECTCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSELECTCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Subroutine": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Subroutine Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSUBROUTINECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSUBROUTINECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Execute": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Execute Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKEXECUTECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKEXECUTECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Conversion": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Conversion Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKCONVERSIONCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKCONVERSIONCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Format": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Format Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKFORMATCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKFORMATCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/Dictionaries": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Dictionaries Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKDICTIONARIESCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKDICTIONARIESCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/GetVersion": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "GetVersion Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETVERSIONCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETVERSIONCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/LkSchemas": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "LkSchemas Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSCHEMASCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSCHEMASCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/LkSchemasSqlMode": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "LkSchemas SQLMode Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSCHEMASSQLMODECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSCHEMASSQLMODECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/LkSchemasDictionaries": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "LkSchemas Dictionaries Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSCHEMASDICTIONARIESCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKSCHEMASDICTIONARIESCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/LkProperties": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "LkProperties Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKPROPERTIESCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKPROPERTIESCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/LkPropertiesSqlMode": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "LkProperties SQLMode Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKPROPERTIESSQLMODECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKPROPERTIESSQLMODECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/LkPropertiesDictionaries": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "LkProperties Dictionaries Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKPROPERTIESDICTIONARIESCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKPROPERTIESDICTIONARIESCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/GetTable": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "GetTable Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETTABLECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETTABLECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/GetTableSqlMode": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "GetTable SQLMode Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETTABLESQLMODECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETTABLESQLMODECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/GetTableDictionaries": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "GetTable Dictionaries Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETTABLEDICTIONARIESCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETTABLEDICTIONARIESCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/GetTableNone": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "GetTable None Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETTABLENONECOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKGETTABLENONECOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/sendcommand/ResetCommonBlocks": {
+      "post": {
+        "tags": [
+          "SendCommand"
+        ],
+        "summary": "Reset Common Blocks Command",
+        "externalDocs": {
+          "url": "https://kosday.com/Manuals/en_WEB_LINKAR_FRAMEWORK/lk_sendcommand.html"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LKRESETCOMMONBLOCKSCOMMAND"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LKRESETCOMMONBLOCKSCOMMAND"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/COMMAND"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        },
+        "security": [
+          { }
+        ]
+      }
+    },
+    "/api/v1/apidemo/custom/select.demo": {
+      "post": {
+        "tags": [
+          "Custom"
+        ],
+        "description": "<b>example of a SELECT command</b><br>Return a list of records",
+        "parameters": [
+          {
+            "name": "arg1",
+            "in": "query",
+            "description": "Filename",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success, List of records",
+            "content": {
+              "application/json": { },
+              "text/plain": { }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/custom/subroutine.demo": {
+      "post": {
+        "tags": [
+          "Custom"
+        ],
+        "description": "<b>example of a JSON command with arguments in URL</b><br>Wait a few seconds and capitalize the text",
+        "parameters": [
+          {
+            "name": "arg1",
+            "in": "query",
+            "description": "Waiting time in seconds",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "arg2",
+            "in": "query",
+            "description": "Text to be capitalized",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success, Text in capital letters",
+            "content": {
+              "application/json": { },
+              "text/plain": { }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/custom/subroutine.demo.with.LKBODY": {
+      "post": {
+        "tags": [
+          "Custom"
+        ],
+        "description": "<b>example of a JSON command with arguments in the request body</b><br>Wait a few seconds and capitalize the text<br>In this case the Body of the call is used to send the arguments.",
+        "requestBody": {
+          "description": "Sample body text",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "example": "{ \"ARGUMENT\": \"Time to sleep\" },\n\t{ \"ARGUMENT\": \"text to capitalize\" }"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success, Text in capital letters",
+            "content": {
+              "application/json": { },
+              "text/plain": { }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/custom/subroutine.demo.xml": {
+      "post": {
+        "tags": [
+          "Custom"
+        ],
+        "description": "<b>example of XML command</b><br>Wait a few seconds and capitalize the text",
+        "parameters": [
+          {
+            "name": "arg1",
+            "in": "query",
+            "description": "Waiting time in seconds",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "arg2",
+            "in": "query",
+            "description": "Text to be capitalized",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success, Text in capital letters",
+            "content": {
+              "application/xml": { },
+              "text/plain": { }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/custom/demo.in.cascade": {
+      "post": {
+        "tags": [
+          "Custom"
+        ],
+        "description": "<b>example of cascading commands</b><br>The first command executes a READ of Record 2 of File LK.CUSTOMERS. <br>The second command executes a SUBROUTINE, and one of its input arguments is the expression COMMAND.RECORDS[0].NAME which is extracted from the result of the first command.<br>In this example the use of the %LK.OUT:<expression>% tag is visible.",
+        "parameters": [
+          {
+            "name": "arg1",
+            "in": "query",
+            "description": "Customer Code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "arg2",
+            "in": "query",
+            "description": "Nick Name (lower case)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success, Customer Name and Nick Name capitalized",
+            "content": {
+              "application/json": { },
+              "text/plain": { }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/apidemo/scopes": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Scopes",
+        "description": "Get a list of all possible scopes.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Health",
+        "description": "This \"Endpoint\" only returns the literal \"UP\"<br>The purpose of this Emdpoint is to have a quick mechanism to know if the service is listening.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EXECUTE": {
+        "type": "object",
+        "properties": {
+          "CAPTURING": {
+            "type": "string",
+            "additionalProperties": false
+          },
+          "RETURNING": {
+            "type": "string",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "CONVERSION": {
+        "type": "object",
+        "properties": {
+          "CONVERSION": {
+            "type": "string",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "FORMAT": {
+        "type": "object",
+        "properties": {
+          "FORMAT": {
+            "type": "string",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "GETVERSION": {
+        "type": "object",
+        "properties": {
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LKITEMID": {
+                  "type": "string"
+                },
+                "LKMVCOMPONENTSVERSION": {
+                  "type": "string"
+                },
+                "LKSERVERVERSION": {
+                  "type": "string"
+                },
+                "LKCLIENTVERSION": {
+                  "type": "string"
+                },
+                "DATABASE": {
+                  "type": "string"
+                },
+                "OS": {
+                  "type": "string"
+                },
+                "DATEZERO": {
+                  "type": "string"
+                },
+                "DATEOUTPUTCONVERSION": {
+                  "type": "string"
+                },
+                "TIMEOUTPUTCONVERSION": {
+                  "type": "string"
+                },
+                "MVDATETIMESEPARATOR": {
+                  "type": "string"
+                },
+                "MVBOOLTRUE": {
+                  "type": "string"
+                },
+                "MVBOOLFALSE": {
+                  "type": "string"
+                },
+                "OUTPUTBOOLTRUE": {
+                  "type": "string"
+                },
+                "OUTPUTBOOLFALSE": {
+                  "type": "string"
+                },
+                "MVDECIMALSEPARATOR": {
+                  "type": "string"
+                },
+                "OTHERLANGUAGES": {
+                  "type": "string"
+                },
+                "TABLEROWSEPARATOR": {
+                  "type": "string"
+                },
+                "TABLECOLSEPARATOR": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "xml": {
+                "name": "RECORD"
+              }
+            },
+            "xml": {
+              "name": "RECORDS",
+              "wrapped": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "LKSCHEMAS": {
+        "type": "object",
+        "properties": {
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LKITEMID": {
+                  "type": "string"
+                },
+                "FILENAME": {
+                  "type": "string"
+                },
+                "TABLENAME": {
+                  "type": "string"
+                },
+                "VISIBLE": {
+                  "type": "string"
+                },
+                "DESCRIPTION": {
+                  "type": "string"
+                },
+                "BASETYPE": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "xml": {
+                "name": "RECORD"
+              }
+            },
+            "xml": {
+              "name": "RECORDS",
+              "wrapped": true
+            }
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "LKSCHEMAS_DICTIONARIES": {
+        "type": "object",
+        "properties": {
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LKITEMID": {
+                  "type": "string"
+                },
+                "FILENAME": {
+                  "type": "string"
+                },
+                "TABLENAME": {
+                  "type": "string"
+                },
+                "VISIBLE": {
+                  "type": "string"
+                },
+                "DESCRIPTION": {
+                  "type": "string"
+                },
+                "BASETYPE": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "xml": {
+                "name": "RECORD"
+              }
+            },
+            "xml": {
+              "name": "RECORDS",
+              "wrapped": true
+            }
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "RESETCOMMONBLOCKS": {
+        "type": "object",
+        "properties": {
+          "CAPTURING": {
+            "type": "string",
+            "additionalProperties": false
+          },
+          "RETURNING": {
+            "type": "string",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "LK.CUSTOMERS": {
+        "type": "object",
+        "properties": {
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LKITEMID": {
+                  "type": "string"
+                },
+                "NAME": {
+                  "type": "string",
+                  "description": "Name"
+                },
+                "ADDR": {
+                  "type": "string",
+                  "description": "Address"
+                },
+                "PHONE": {
+                  "type": "string",
+                  "description": "Phone"
+                }
+              },
+              "additionalProperties": false,
+              "xml": {
+                "name": "RECORD"
+              }
+            },
+            "xml": {
+              "name": "RECORDS",
+              "wrapped": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "LK.CUSTOMERS.DICT": {
+        "type": "object",
+        "properties": {
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LKITEMID": {
+                  "type": "string"
+                },
+                "NAME": {
+                  "type": "string",
+                  "description": "Name"
+                },
+                "ADDR": {
+                  "type": "string",
+                  "description": "Address"
+                },
+                "PHONE": {
+                  "type": "string",
+                  "description": "Phone"
+                }
+              },
+              "additionalProperties": false,
+              "xml": {
+                "name": "RECORD"
+              }
+            },
+            "xml": {
+              "name": "RECORDS",
+              "wrapped": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "LK.CUSTOMERS.SCH": {
+        "type": "object",
+        "properties": {
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LKITEMID": {
+                  "type": "string"
+                },
+                "Myname": {
+                  "type": "string",
+                  "description": "MYNAME"
+                },
+                "Name": {
+                  "type": "string",
+                  "description": "Customer Name"
+                },
+                "Addr": {
+                  "type": "string",
+                  "description": "Address"
+                },
+                "Phone": {
+                  "type": "string",
+                  "description": "Phone"
+                }
+              },
+              "additionalProperties": false,
+              "xml": {
+                "name": "RECORD"
+              }
+            },
+            "xml": {
+              "name": "RECORDS",
+              "wrapped": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "LKPROPERTIES": {
+        "type": "object",
+        "properties": {
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "LKITEMID": {
+                  "type": "string"
+                },
+                "FILENAME": {
+                  "type": "string"
+                },
+                "DICTNAME": {
+                  "type": "string"
+                },
+                "EQUALTO": {
+                  "type": "string"
+                },
+                "FIELDNUMBER": {
+                  "type": "string"
+                },
+                "FIELDMVNUMBER": {
+                  "type": "string"
+                },
+                "FIELDSVNUMBER": {
+                  "type": "string"
+                },
+                "ISKEY": {
+                  "type": "string"
+                },
+                "REQUIRED": {
+                  "type": "string"
+                },
+                "CALCULATED": {
+                  "type": "string"
+                },
+                "CUSTOMCONVERSION": {
+                  "type": "string"
+                },
+                "CUSTOMFORMAT": {
+                  "type": "string"
+                },
+                "PROPNAME": {
+                  "type": "string"
+                },
+                "MVTABLE": {
+                  "type": "string"
+                },
+                "SVTABLE": {
+                  "type": "string"
+                },
+                "DATATYPE": {
+                  "type": "string"
+                },
+                "MAXLENGTH": {
+                  "type": "string"
+                },
+                "OPTIONS": {
+                  "type": "string"
+                },
+                "OPTIONSLABEL": {
+                  "type": "string"
+                },
+                "DECIMALS": {
+                  "type": "string"
+                },
+                "RANGEMIN": {
+                  "type": "string"
+                },
+                "RANGEMAX": {
+                  "type": "string"
+                },
+                "VISIBLE": {
+                  "type": "string"
+                },
+                "MAINLABEL": {
+                  "type": "string"
+                },
+                "SHORTLABEL": {
+                  "type": "string"
+                },
+                "PROMPTLABEL": {
+                  "type": "string"
+                },
+                "HELPLABEL": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "xml": {
+                "name": "RECORD"
+              }
+            },
+            "xml": {
+              "name": "RECORDS",
+              "wrapped": true
+            }
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "GETTABLE": {
+        "type": "object",
+        "properties": {
+          "TABLE": {
+            "type": "string",
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "xml": {
+          "name": "LINKAR"
+        }
+      },
+      "COMMAND": {
+        "type": "object",
+        "properties": {
+          "NAME": {
+            "type": "string"
+          },
+          "COMMAND": {
+            "type": "object"
+          }
+        }
+      },
+      "RECORD": {
+        "type": "object",
+        "properties": {
+          "LKITEMID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKREADARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "RECORDS"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "DICT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ORIGINAL_RECORDS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKREADCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKREADARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKUPDATEARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "RECORDS"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "READ_AFTER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ORIGINAL_RECORDS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OPTIMISTIC_LOCK": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKUPDATECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKUPDATEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKUPDATEPARTIALARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "RECORDS"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "READ_AFTER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ORIGINAL_RECORDS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OPTIMISTIC_LOCK": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKUPDATEPARTIALCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKUPDATEPARTIALARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKNEWARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "RECORDS"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "READ_AFTER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ORIGINAL_RECORDS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKNEWCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKNEWARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKNEWLINKARARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "NEW_RECORD_ID_TYPE",
+          "RECORDS"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "READ_AFTER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ORIGINAL_RECORDS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "NEW_RECORD_ID_TYPE": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "NEW_RECORD_ID_FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "NEW_RECORD_ID_PREFIX": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "NEW_RECORD_ID_SEPARATOR": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKNEWLINKARCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKNEWLINKARARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKNEWRANDOMARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "NEW_RECORD_ID_TYPE",
+          "RECORDS"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "READ_AFTER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ORIGINAL_RECORDS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "NEW_RECORD_ID_TYPE": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "NEW_RECORD_ID_NUMERIC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "NEW_RECORD_ID_LENGTH": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKNEWRANDOMCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKNEWRANDOMARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKNEWCUSTOMARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "NEW_RECORD_ID_TYPE",
+          "RECORDS"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "READ_AFTER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ORIGINAL_RECORDS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "NEW_RECORD_ID_TYPE": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKNEWCUSTOMCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKNEWCUSTOMARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKDELETEARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "RECORDS"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "OPTIMISTIC_LOCK": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKDELETECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKDELETEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKDELETELINKARARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "RECORDS",
+          "RECOVER_RECORD_ID_TYPE"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "OPTIMISTIC_LOCK": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECOVER_RECORD_ID_TYPE": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECOVER_RECORD_ID_PREFIX": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECOVER_RECORD_ID_SEPARATOR": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKDELETELINKARCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKDELETELINKARARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKDELETECUSTOMARGUMENTS": {
+        "required": [
+          "FILE_NAME",
+          "RECORDS",
+          "RECOVER_RECORD_ID_TYPE"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "RECORDS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RECORD"
+            }
+          },
+          "OPTIMISTIC_LOCK": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECOVER_RECORD_ID_TYPE": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKDELETECUSTOMCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKDELETECUSTOMARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSELECTARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "SELECT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "SORT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DICT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PRESELECT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FORMAT_SPEC": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ORIGINAL_RECORDS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ONLY_RECORD_ID": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSELECTCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKSELECTARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKARGUMENT": {
+        "required": [
+          "ARGUMENT"
+        ],
+        "type": "object",
+        "properties": {
+          "ARGUMENT": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSUBROUTINEARGUMENTS": {
+        "required": [
+          "ARGUMENTS",
+          "NUMBER_OF_ARGUMENTS",
+          "SUBROUTINE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "SUBROUTINE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "NUMBER_OF_ARGUMENTS": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "ARGUMENTS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LKARGUMENT"
+            }
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSUBROUTINECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKSUBROUTINEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKEXECUTEARGUMENTS": {
+        "required": [
+          "STATEMENT"
+        ],
+        "type": "object",
+        "properties": {
+          "STATEMENT": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKEXECUTECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKEXECUTEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKCONVERSIONARGUMENTS": {
+        "required": [
+          "CODE",
+          "EXPRESSIONS",
+          "TYPE"
+        ],
+        "type": "object",
+        "properties": {
+          "CODE": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "EXPRESSIONS": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "TYPE": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKCONVERSIONCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKCONVERSIONARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKFORMATARGUMENTS": {
+        "required": [
+          "EXPRESSIONS",
+          "FORMAT_SPEC"
+        ],
+        "type": "object",
+        "properties": {
+          "FORMAT_SPEC": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "EXPRESSIONS": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKFORMATCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKFORMATARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKDICTIONARIESARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKDICTIONARIESCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKDICTIONARIESARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETVERSIONARGUMENTS": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "LKGETVERSIONCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKGETVERSIONARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSCHEMASARGUMENTS": {
+        "type": "object",
+        "properties": {
+          "ONLYVISIBLES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWPROPERTIES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSCHEMASCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKSCHEMASARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSCHEMASSQLMODEARGUMENTS": {
+        "type": "object",
+        "properties": {
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSCHEMASSQLMODECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKSCHEMASSQLMODEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSCHEMASDICTIONARIESARGUMENTS": {
+        "type": "object",
+        "properties": {
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKSCHEMASDICTIONARIESCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKSCHEMASDICTIONARIESARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKPROPERTIESARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "ONLYVISIBLES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWPROPERTIES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "USEPROPERTYNAMES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKPROPERTIESCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKPROPERTIESARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKPROPERTIESSQLMODEARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKPROPERTIESSQLMODECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKPROPERTIESSQLMODEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKPROPERTIESDICTIONARIESARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "OUTPUT_FORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKPROPERTIESDICTIONARIESCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKPROPERTIESDICTIONARIESARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETTABLEARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "SELECT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "SORT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DICT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ONLYVISIBLES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWPROPERTIES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "USEPROPERTYNAMES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "REPEATVALUES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "APPLYCONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "APPLYFORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETTABLECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKGETTABLEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETTABLESQLMODEARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "SELECT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "SORT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DICT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "APPLYCONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "APPLYFORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETTABLESQLMODECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKGETTABLESQLMODEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETTABLEDICTIONARIESARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "SELECT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "SORT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DICT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "REPEATVALUES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "APPLYCONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "APPLYFORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETTABLEDICTIONARIESCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKGETTABLEDICTIONARIESARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETTABLENONEARGUMENTS": {
+        "required": [
+          "FILE_NAME"
+        ],
+        "type": "object",
+        "properties": {
+          "FILE_NAME": {
+            "minLength": 1,
+            "type": "string",
+            "example": ""
+          },
+          "SELECT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "SORT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DICT_CLAUSE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "ROWHEADERS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "REPEATVALUES": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CALCULATED": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "APPLYCONVERSION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "APPLYFORMAT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGINATION": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "PAGE_NUMBER": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "RECORDS_FOR_PAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "CUSTOM_VARS": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKGETTABLENONECOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKGETTABLENONEARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "LKRESETCOMMONBLOCKSARGUMENTS": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "LKRESETCOMMONBLOCKSCOMMAND": {
+        "required": [
+          "APIKEY",
+          "DATA"
+        ],
+        "type": "object",
+        "properties": {
+          "APIKEY": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "DATA": {
+            "$ref": "#/components/schemas/LKRESETCOMMONBLOCKSARGUMENTS"
+          },
+          "LANGUAGE": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          },
+          "FREETEXT": {
+            "type": "string",
+            "nullable": true,
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad Request"
+      }
+    },
+  }
+}
