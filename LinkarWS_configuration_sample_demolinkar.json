@@ -1,16 +1,4 @@
 {
-	"AppSettings": {
-		"Kestrel": {
-			"Limits": {
-				"KeepAliveTimeout": 130
-			},
-			"Endpoints": {
-				"Http": {
-					"Url": "http://*:12000",
-					"Protocols": "Http1AndHttp2"
-				}
-			}
-		},
 		"Linkar": {
 			"AdminMode": true,
 			"ServiceName": "LinkarWS",
@@ -53,11 +41,11 @@
 		"myapikey": {
 			"Enabled": true,
 			"Name": "myapikey",
-			"Description": "Demo API Key",
-			"InternalDescription": null,
+			"Description": "Demo API Key.",
+			"InternalDescription": "Only for my main customer",
 			"ExpirationDate": null,
 			"AllowedIps": null,
-			"Scopes": "apidemo.custom apidemo.sendcommand apidemo.functions apidemo.crud"
+			"Scopes": "apidemo.crud apidemo.functions apidemo.sendcommand apidemo.custom"
 		}
 	},
 	"ApiResources": {
@@ -97,10 +85,10 @@
 			"InputArgsDescription": "Waiting time in seconds\nText to be capitalized",
 			"RequestBodyDescription": null,
 			"RequestBodyExample": null,
-			"OutputArg": null,
+			"OutputArg": "ARGUMENTS[3]",
 			"OutputArgDescription": "Text in capital letters",
 			"Type": "JSON",
-			"Content": "{\n\t\"NAME\": \"SUBROUTINE\",\n\t\"COMMAND\": {\n\t\t\"OUTPUT_FORMAT\": \"JSON\",\n\t\t\"SUBROUTINE_NAME\": \"SUB.DEMOLINKAR\",\n\t\t\"NUMBER_OF_ARGUMENTS\": \"3\",\n\t\t\"ARGUMENTS\": [\n\t\t\t{ \"ARGUMENT\": \"%LKARG1%\" },\n\t\t\t{ \"ARGUMENT\": \"%LKARG2%\" },\n\t\t\t{ \"ARGUMENT\": \"\" }\n\t\t]\n\t}\n}"
+			"Content": "{\n\t\"NAME\": \"SUBROUTINE\",\n\t\"COMMAND\": {\n\t\t\"OUTPUT_FORMAT\": \"MV\",\n\t\t\"SUBROUTINE_NAME\": \"SUB.DEMOLINKAR\",\n\t\t\"NUMBER_OF_ARGUMENTS\": \"3\",\n\t\t\"ARGUMENTS\": [\n\t\t\t{ \"ARGUMENT\": \"%LKARG1%\" },\n\t\t\t{ \"ARGUMENT\": \"%LKARG2%\" },\n\t\t\t{ \"ARGUMENT\": \"\" }\n\t\t]\n\t}\n}"
 		},
 		"subroutine.demo.with.LKBODY": {
 			"Name": "subroutine.demo.with.LKBODY",
@@ -215,6 +203,31 @@
 					"ValueType": "String"
 				}
 			}
+		},
+		"reportsapp": {
+			"Enabled": true,
+			"ClientName": "reportsapp",
+			"GrantTypes": "password",
+			"Description": null,
+			"ClientUri": null,
+			"LogoUri": null,
+			"ClientClaimsPrefix": "client_",
+			"AllowedCorsOrigins": null,
+			"AllowedScopes": "apidemo.custom apidemo.sendcommand apidemo.functions apidemo.crud",
+			"RegisterAllow": false,
+			"ChangePassAllow": false,
+			"ForgotPassAllow": false,
+			"ForgotPassUrlRedirect": null,
+			"InternalMailTo": null,
+			"Secrets": {
+				"d839fc355b93cc46c8c6eff46e6b9ee8fb839c1a9e88e9c27ec6731b95ee": {
+					"ClientId": 2,
+					"Description": "Default secret",
+					"Value": "d839fc355b93cc46c8c6eff46e6b9ee8fb839c1a9e88e9c27ec6731b95ee",
+					"Type": "App",
+					"Expiration": null
+				}
+			}
 		}
 	},
 	"IdentityResources": {
@@ -225,14 +238,6 @@
 			"Description": null,
 			"UseLsc": false,
 			"LinkarServerConnection": null
-		}
-	},
-	"LinkarWSUsers": {
-		"admin": {
-			"Name": "Administrator",
-			"Email": null,
-			"Username": "admin",
-			"Password": "admin"
 		}
 	}
 }
