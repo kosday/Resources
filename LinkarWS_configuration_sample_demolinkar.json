@@ -1,7 +1,42 @@
 {
+	"AppSettings": {
+		"Kestrel": {
+			"Limits": {
+				"KeepAliveTimeout": 130
+			},
+			"Endpoints": {
+				"Http": {
+					"Url": "http://*:12000",
+					"Protocols": "Http1AndHttp2"
+				}
+			}
+		},
+		"Linkar": {
+			"AdminMode": true,
+			"ServiceName": "LinkarWS",
+			"ServiceNameDisplay": "LinkarWS",
+			"ServiceDescription": "LinkarWS",
+			"AuthMode": "ApiKey"
+		},
+		"AllowedHosts": "*",
+		"Serilog": {
+			"WriteTo": [{
+					"Name": "File",
+					"Args": {
+						"path": "C:\\DATA\\LINKARWS\\LOGS\\KestrelAPI.log",
+						"outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}]{Message:lj}{NewLine}{Exception}",
+						"rollingInterval": "Day",
+						"rollOnFileSizeLimit": false,
+						"restrictedToMinimumLevel": "Warning",
+						"fileSizeLimitBytes": 107374,
+						"retainedFileCountLimit": 31
+					}
+				}
+			]
+		}
+	},
 	"LinkarServerConnections": {
 		"demolinkar": {
-			"Id": 1,
 			"Name": "demolinkar",
 			"Ip": "mylinkarsuite.com",
 			"Description": "Parameters of the EntryPoint that is open in Linkar Server to access the DEMO.LINKAR account",
@@ -16,125 +51,114 @@
 	},
 	"ApiKeys": {
 		"myapikey": {
-			"Id": 1,
 			"Enabled": true,
 			"Name": "myapikey",
 			"Description": "Demo API Key",
 			"InternalDescription": null,
 			"ExpirationDate": null,
 			"AllowedIps": null,
-			"Scopes": "apidemo.crud apidemo.functions apidemo.sendcommand apidemo.custom"
+			"Scopes": "apidemo.custom apidemo.sendcommand apidemo.functions apidemo.crud"
 		}
 	},
 	"ApiResources": {
 		"apidemo": {
-			"Id": 1,
 			"Enabled": true,
 			"Name": "apidemo",
-			"DisplayName": "apidemo",
-			"Description": "apidemo",
-			"LinkarServerConnectionId": 1,
-			"AllowedCRUDFiles": "LK.CUSTOMERS LK.ITEMS LK.ORDERS",
+			"DisplayName": "Linkar Web Services apidemo",
+			"Description": "<html>\n<body>\n<p>Linkar Web Services is a platform of \"no develop\" REST API services type that allows to expose, through a series of operations or EndPoints, the data coming from one or more Linkar Server EntryPoints.</p><p>LinkarWS does not require to create any service, nor host it in any web server. It is not necessary either to develop BASIC routines to expose the data, unless users want to run their own subroutines.</p> <p>LinkarWS meets OPENID standards and integrates several operation modes that encompass different ways of managing authentication and authorization.<br><b>These modes are:</b></p><ul>  <li><b>None:</b> The API will be totally public.</li> <li><b>ApiKey:</b> By using an ApiKey, the operation is authenticated and authorized. This mode allows it to work in a similar way to previous versions of the Linkar REST API.</li> <li><b>Oauth2.0:</b> Grants authentication and authorization control to LinkarWS using OAuth 2.0 and OpenID standards.</li> <li><b>IdentityServer4:</b> Users will be able to connect an IdentityServer4 identity server with LinkarWS to delegate authentication to the identity server.</li> </ul>\n<img src='https://kosday.com/wp-content/uploads/LinkarWS_MULTIAPI-768x568.png'>\n </body>\n</html>",
+			"LinkarServerConnection": "demolinkar",
+			"AllowedCRUDFiles": "LK.CUSTOMERS",
 			"AllowedCRUDSchemas": null,
 			"AllowedSubroutines": "SUB.DEMOLINKAR",
-			"AllowedExecuteStatements": null,
+			"AllowedExecuteStatements": "WHO",
 			"AllowedCustomEndPoints": "select.demo subroutine.demo subroutine.demo.with.LKBODY subroutine.demo.xml demo.in.cascade",
 			"Scopes": "crud functions sendcommand custom"
 		}
 	},
 	"CustomEndPoints": {
 		"select.demo": {
-			"Id": 1,
 			"Name": "select.demo",
 			"InternalDescription": "Select a generic file",
 			"Enabled": true,
-			"EndpointDescription": "Return a list of records",
+			"EndpointDescription": "<b>example of a SELECT command</b>\nReturn a list of records",
 			"InputArgsDescription": "Filename",
 			"RequestBodyDescription": null,
 			"RequestBodyExample": null,
 			"OutputArg": null,
 			"OutputArgDescription": "List of records",
 			"Type": "JSON",
-			"Content": "{\n\t\"NAME\": \"SELECT\",\n\t\"COMMAND\": {\n\t\t\"CALCULATED\": \"False\",\n\t\t\"CONVERSION\": \"False\",\n\t\t\"FORMAT_SPEC\": \"False\",\n\t\t\"ORIGINAL_RECORDS\": \"False\",\n\t\t\"ONLY_RECORD_ID\": \"False\",\n\t\t\"PAGINATION\": \"True\",\n\t\t\"PAGE_NUMBER\": \"1\",\n\t\t\"RECORDS_FOR_PAGE\": \"10\",\n\t\t\"CUSTOM_VARS\": \"\",\n\t\t\"OUTPUT_FORMAT\": \"JSON\",\n\t\t\"FILE_NAME\": \"%LKARG1%\",\n\t\t\"SELECT_CLAUSE\": \"\",\n\t\t\"SORT_CLAUSE\": \"BY ID\",\n\t\t\"DICT_CLAUSE\": \"\",\n\t\t\"PRESELECT_CLAUSE\": \"\"\n\t}\n}\n\n"
+			"Content": "{\n\t\"NAME\": \"SELECT\",\n\t\"COMMAND\": {\n\t\t\"CALCULATED\": \"False\",\n\t\t\"CONVERSION\": \"False\",\n\t\t\"FORMAT_SPEC\": \"False\",\n\t\t\"ORIGINAL_RECORDS\": \"False\",\n\t\t\"ONLY_RECORD_ID\": \"False\",\n\t\t\"PAGINATION\": \"True\",\n\t\t\"PAGE_NUMBER\": \"1\",\n\t\t\"RECORDS_FOR_PAGE\": \"10\",\n\t\t\"CUSTOM_VARS\": \"\",\n\t\t\"OUTPUT_FORMAT\": \"JSON\",\n\t\t\"FILE_NAME\": \"%LKARG1%\",\n\t\t\"SELECT_CLAUSE\": \"\",\n\t\t\"SORT_CLAUSE\": \"BY ID\",\n\t\t\"DICT_CLAUSE\": \"\",\n\t\t\"PRESELECT_CLAUSE\": \"\"\n\t}\n}"
 		},
 		"subroutine.demo": {
-			"Id": 2,
 			"Name": "subroutine.demo",
 			"InternalDescription": "Call to SUB.DEMOLINKAR Subroutine",
 			"Enabled": true,
-			"EndpointDescription": "Wait a few seconds and capitalize the text",
+			"EndpointDescription": "<b>example of a JSON command with arguments in URL</b>\nWait a few seconds and capitalize the text",
 			"InputArgsDescription": "Waiting time in seconds\nText to be capitalized",
 			"RequestBodyDescription": null,
 			"RequestBodyExample": null,
 			"OutputArg": null,
 			"OutputArgDescription": "Text in capital letters",
 			"Type": "JSON",
-			"Content": "{\n\t\"NAME\": \"SUBROUTINE\",\n\t\"COMMAND\": {\n\t\t\"OUTPUT_FORMAT\": \"MV\",\n\t\t\"SUBROUTINE_NAME\": \"SUB.DEMOLINKAR\",\n\t\t\"NUMBER_OF_ARGUMENTS\": \"3\",\n\t\t\"ARGUMENTS\": [\n\t\t\t{ \"ARGUMENT\": \"%LKARG1%\" },\n\t\t\t{ \"ARGUMENT\": \"%LKARG2%\" },\n\t\t\t{ \"ARGUMENT\": \"\" }\n\t\t]\n\t}\n}\n"
+			"Content": "{\n\t\"NAME\": \"SUBROUTINE\",\n\t\"COMMAND\": {\n\t\t\"OUTPUT_FORMAT\": \"JSON\",\n\t\t\"SUBROUTINE_NAME\": \"SUB.DEMOLINKAR\",\n\t\t\"NUMBER_OF_ARGUMENTS\": \"3\",\n\t\t\"ARGUMENTS\": [\n\t\t\t{ \"ARGUMENT\": \"%LKARG1%\" },\n\t\t\t{ \"ARGUMENT\": \"%LKARG2%\" },\n\t\t\t{ \"ARGUMENT\": \"\" }\n\t\t]\n\t}\n}"
 		},
 		"subroutine.demo.with.LKBODY": {
-			"Id": 3,
 			"Name": "subroutine.demo.with.LKBODY",
 			"InternalDescription": "Call to SUB.DEMOLINKAR Subroutine with LKBODY",
 			"Enabled": true,
-			"EndpointDescription": "Wait a few seconds and capitalize the text\nIn this case the Body of the call is used to send the arguments.",
+			"EndpointDescription": "<b>example of a JSON command with arguments in the request body</b>\nWait a few seconds and capitalize the text\nIn this case the Body of the call is used to send the arguments.",
 			"InputArgsDescription": null,
 			"RequestBodyDescription": "Sample body text",
-			"RequestBodyExample": "\t{ \"ARGUMENT\": \"Time to sleep\" },\n\t{ \"ARGUMENT\": \"text to capitalize\" }\n",
-			"OutputArg": "ARGUMENTS[2]",
+			"RequestBodyExample": "{ \"ARGUMENT\": \"Time to sleep\" },\n\t{ \"ARGUMENT\": \"text to capitalize\" }",
+			"OutputArg": "COMMAND.ARGUMENTS[2]",
 			"OutputArgDescription": "Text in capital letters",
 			"Type": "JSON",
-			"Content": "{\n\t\"NAME\": \"SUBROUTINE\",\n\t\"COMMAND\": {\n\t\t\"OUTPUT_FORMAT\": \"JSON\",\n\t\t\"SUBROUTINE_NAME\": \"SUB.DEMOLINKAR\",\n\t\t\"NUMBER_OF_ARGUMENTS\": \"3\",\n                \"ARGUMENTS\": [\n\t  \t    %LKBODY%,\n     \t            { \"ARGUMENT\": \"\" }\n                ]\n\t}\n}\n"
+			"Content": "{\n\t\"NAME\": \"SUBROUTINE\",\n\t\"COMMAND\": {\n\t\t\"OUTPUT_FORMAT\": \"JSON\",\n\t\t\"SUBROUTINE_NAME\": \"SUB.DEMOLINKAR\",\n\t\t\"NUMBER_OF_ARGUMENTS\": \"3\",\n                \"ARGUMENTS\": [\n\t  \t    %LKBODY%,\n     \t            { \"ARGUMENT\": \"\" }\n                ]\n\t}\n}"
 		},
 		"subroutine.demo.xml": {
-			"Id": 4,
 			"Name": "subroutine.demo.xml",
 			"InternalDescription": "Call to SUB.DEMOLINKAR Subroutine",
 			"Enabled": true,
-			"EndpointDescription": "Wait a few seconds and capitalize the text",
+			"EndpointDescription": "<b>example of XML command</b>\nWait a few seconds and capitalize the text",
 			"InputArgsDescription": "Waiting time in seconds\nText to be capitalized",
 			"RequestBodyDescription": null,
 			"RequestBodyExample": null,
-			"OutputArg": "/ARGUMENTS/ARGUMENT[3]",
+			"OutputArg": "/RESPONSE/ARGUMENTS/ARGUMENT[3]",
 			"OutputArgDescription": "Text in capital letters",
 			"Type": "XML",
-			"Content": "<COMMAND NAME=\"SUBROUTINE\">\n\t<SUBROUTINE_NAME>SUB.DEMOLINKAR</SUBROUTINE_NAME>\n\t<NUMBER_OF_ARGUMENTS>3</NUMBER_OF_ARGUMENTS>\n\t<ARGUMENTS>\n\t\t<ARGUMENT>%LKARG1%</ARGUMENT>\n\t\t<ARGUMENT>%LKARG2%</ARGUMENT>\n\t\t<ARGUMENT></ARGUMENT>\n\t</ARGUMENTS>\n\t<CUSTOM_VARS></CUSTOM_VARS>\n\t<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\n</COMMAND>\n\n<COMMAND NAME=\"SUBROUTINE\">\n\t<SUBROUTINE_NAME>SUB.DEMOLINKAR</SUBROUTINE_NAME>\n\t<NUMBER_OF_ARGUMENTS>3</NUMBER_OF_ARGUMENTS>\n\t<ARGUMENTS>\n\t\t<ARGUMENT>0</ARGUMENT>\n\t\t<ARGUMENT>Second Command. %LKOUT:ARGUMENTS/ARGUMENT[3]%</ARGUMENT>\n\t\t<ARGUMENT></ARGUMENT>\n\t</ARGUMENTS>\n\t<CUSTOM_VARS></CUSTOM_VARS>\n\t<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\n</COMMAND>\n"
+			"Content": "<COMMAND NAME=\"SUBROUTINE\">\n\t<SUBROUTINE_NAME>SUB.DEMOLINKAR</SUBROUTINE_NAME>\n\t<NUMBER_OF_ARGUMENTS>3</NUMBER_OF_ARGUMENTS>\n\t<ARGUMENTS>\n\t\t<ARGUMENT>%LKARG1%</ARGUMENT>\n\t\t<ARGUMENT>%LKARG2%</ARGUMENT>\n\t\t<ARGUMENT></ARGUMENT>\n\t</ARGUMENTS>\n\t<CUSTOM_VARS></CUSTOM_VARS>\n\t<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>\n</COMMAND>"
 		},
 		"demo.in.cascade": {
-			"Id": 5,
 			"Name": "demo.in.cascade",
 			"InternalDescription": "Demo in cascade",
 			"Enabled": true,
-			"EndpointDescription": null,
+			"EndpointDescription": "<b>example of cascading commands</b>\nThe first command executes a READ of Record 2 of File LK.CUSTOMERS. \nThe second command executes a SUBROUTINE, and one of its input arguments is the expression COMMAND.RECORDS[0].NAME which is extracted from the result of the first command.\nIn this example the use of the %LK.OUT:<expression>% tag is visible.",
 			"InputArgsDescription": "Customer Code\nNick Name (lower case)",
 			"RequestBodyDescription": null,
 			"RequestBodyExample": null,
-			"OutputArg": "ARGUMENTS[2]",
+			"OutputArg": "COMMAND.ARGUMENTS[2]",
 			"OutputArgDescription": "Customer Name and Nick Name capitalized",
 			"Type": "JSON",
-			"Content": "{ \"NAME\" : \"READ\", \"COMMAND\" :\n\t{\n\t\t\"CALCULATED\" : \"False\" ,\n\t\t\"CONVERSION\" : \"False\" ,\n\t\t\"FORMAT_SPEC\" : \"False\" ,\n\t\t\"ORIGINAL_RECORDS\" : \"False\" ,\n\t\t\"CUSTOM_VARS\" : \"\" ,\n\t\t\"OUTPUT_FORMAT\" : \"JSON\" ,\n\t\t\"FILE_NAME\" : \"LK.CUSTOMERS\" ,\n\t\t\"DICT_CLAUSE\" : \"\",\n\t\t\"RECORDS\" :\n\t\t[\n\t\t\t{ \"LKITEMID\" : \"%LKARG1%\" }\n\t\t]\n\t}\n},\n{ \"NAME\" : \"SUBROUTINE\", \"COMMAND\" :\n\t{\n\t\t\"SUBROUTINE_NAME\" : \"SUB.DEMOLINKAR\" ,\n\t\t\"NUMBER_OF_ARGUMENTS\" : \"3\" ,\n\t\t\"ARGUMENTS\" :\n\t\t[\n\t\t\t{ \"ARGUMENT\" : \"0\" } ,\n\t\t\t{ \"ARGUMENT\" : \"%LKOUT:RECORDS[1].NAME% - %LKARG2%\" } ,\n\t\t\t{ \"ARGUMENT\" : \"\" }\n\t\t] ,\n\t\t\"CUSTOM_VARS\" : \"\" ,\n\t\t\"OUTPUT_FORMAT\" : \"JSON\"\n\t}\n}\n"
+			"Content": "{ \"NAME\" : \"READ\", \"COMMAND\" :\n    {\n        \"CALCULATED\" : \"False\" ,\n        \"CONVERSION\" : \"False\" ,\n        \"FORMAT_SPEC\" : \"False\" ,\n        \"ORIGINAL_RECORDS\" : \"False\" ,\n        \"CUSTOM_VARS\" : \"\" ,\n        \"OUTPUT_FORMAT\" : \"JSON\" ,\n        \"FILE_NAME\" : \"LK.CUSTOMERS\" ,\n        \"DICT_CLAUSE\" : \"\",\n        \"RECORDS\" :\n        [\n            { \"LKITEMID\" : \"%LKARG1%\" }\n        ]\n    }\n},\n{ \"NAME\" : \"SUBROUTINE\", \n   \"COMMAND\" :\n    {\n        \"SUBROUTINE_NAME\" : \"SUB.DEMOLINKAR\" ,\n        \"NUMBER_OF_ARGUMENTS\" : \"3\" ,\n        \"ARGUMENTS\" :\n        [\n            { \"ARGUMENT\" : \"0\" } ,\n            { \"ARGUMENT\" : \"%LKOUT:COMMAND.RECORDS[0].NAME% - %LKARG2%\" } ,\n            { \"ARGUMENT\" : \"\" }\n        ] ,\n        \"CUSTOM_VARS\" : \"\" ,\n        \"OUTPUT_FORMAT\" : \"JSON\"\n    }\n}"
 		}
 	},
 	"Claims": {
 		"version": {
-			"Id": 1,
 			"Type": "version",
 			"ValueType": "String",
 			"DefaultFor": "Clients"
 		},
 		"email": {
-			"Id": 2,
 			"Type": "email",
 			"ValueType": "String",
 			"DefaultFor": "Both"
 		},
 		"name": {
-			"Id": 3,
 			"Type": "name",
 			"ValueType": "String",
 			"DefaultFor": "Both"
 		},
 		"email_verified": {
-			"Id": 4,
 			"Type": "email_verified",
 			"ValueType": "Boolean",
 			"DefaultFor": "Both"
@@ -142,24 +166,22 @@
 	},
 	"Clients": {
 		"myapp": {
-			"Id": 1,
 			"Enabled": true,
 			"ClientName": "myapp",
 			"GrantTypes": "client_credentials ",
-			"Description": null,
+			"Description": "This client will provide access to a mobile app.",
 			"ClientUri": null,
 			"LogoUri": null,
 			"ClientClaimsPrefix": "client_",
 			"AllowedCorsOrigins": null,
 			"AllowedScopes": "apidemo.crud apidemo.functions apidemo.sendcommand apidemo.custom",
-			"RegisterAllow": false,
-			"ChangePassAllow": false,
-			"ForgotPassAllow": false,
+			"RegisterAllow": true,
+			"ChangePassAllow": true,
+			"ForgotPassAllow": true,
 			"ForgotPassUrlRedirect": null,
 			"InternalMailTo": null,
 			"Secrets": {
 				"secret": {
-					"Id": 1,
 					"ClientId": 1,
 					"Description": "Default secret",
 					"Value": "secret",
@@ -169,31 +191,27 @@
 			},
 			"Claims": {
 				"email_verified": {
-					"Id": 1,
 					"ClientId": 1,
 					"Type": "email_verified",
 					"Value": "true",
 					"ValueType": "Boolean"
 				},
 				"name": {
-					"Id": 2,
 					"ClientId": 1,
 					"Type": "name",
-					"Value": "a",
+					"Value": "My App",
 					"ValueType": "String"
 				},
 				"email": {
-					"Id": 3,
 					"ClientId": 1,
 					"Type": "email",
-					"Value": "a",
+					"Value": "a@a.com",
 					"ValueType": "String"
 				},
 				"version": {
-					"Id": 4,
 					"ClientId": 1,
 					"Type": "version",
-					"Value": "a",
+					"Value": "1.0",
 					"ValueType": "String"
 				}
 			}
@@ -201,13 +219,20 @@
 	},
 	"IdentityResources": {
 		"identity": {
-			"Id": 1,
 			"Enabled": true,
 			"Name": "identity",
 			"DisplayName": "identity",
 			"Description": null,
 			"UseLsc": false,
-			"LinkarServerConnectionId": null
+			"LinkarServerConnection": null
+		}
+	},
+	"LinkarWSUsers": {
+		"admin": {
+			"Name": "Administrator",
+			"Email": null,
+			"Username": "admin",
+			"Password": "admin"
 		}
 	}
 }
