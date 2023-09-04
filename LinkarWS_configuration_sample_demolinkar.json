@@ -1,29 +1,4 @@
-{
-	"AppSettings": {
-		"Linkar": {
-			"AdminMode": true,
-			"ServiceName": "LinkarWS",
-			"ServiceNameDisplay": "LinkarWS",
-			"ServiceDescription": "LinkarWS",
-			"AuthMode": "ApiKey"
-		},
-		"AllowedHosts": "*",
-		"Serilog": {
-			"WriteTo": [{
-					"Name": "File",
-					"Args": {
-						"path": "C:\\DATA\\LINKARWS\\LOGS\\KestrelAPI.log",
-						"outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}]{Message:lj}{NewLine}{Exception}",
-						"rollingInterval": "Day",
-						"rollOnFileSizeLimit": false,
-						"restrictedToMinimumLevel": "Warning",
-						"fileSizeLimitBytes": 107374,
-						"retainedFileCountLimit": 31
-					}
-				}
-			]
-		}
-	},
+{	
 	"LinkarServerConnections": {
 		"demolinkar": {
 			"Name": "demolinkar",
