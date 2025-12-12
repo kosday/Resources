@@ -1,0 +1,10 @@
+﻿{ "NAME" : "FORMAT", "COMMAND" : 
+	{ 
+		"FORMAT_SPEC" : "" ,
+		"EXPRESSIONS" : "" ,
+		"CUSTOM_VARS" : "" ,
+		"OUTPUT_FORMAT" : "JSON"
+	},
+	"FREETEXT": "",
+	"LANGUAGE": ""
+}

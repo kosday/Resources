@@ -1,0 +1,13 @@
+﻿{ "NAME" : "DELETE", "COMMAND" : 
+	{
+		"OPTIMISTIC_LOCK" : "False" ,
+		"RECOVER_RECORD_ID_TYPE" : "NONE" ,
+		"CUSTOM_VARS" : "" ,
+		"INPUT_FORMAT" : "MV" ,
+		"OUTPUT_FORMAT" : "MV" ,
+		"FILE_NAME" : "" ,
+		"RECORDS": ""
+	},
+	"FREETEXT": "",
+	"LANGUAGE": ""
+}

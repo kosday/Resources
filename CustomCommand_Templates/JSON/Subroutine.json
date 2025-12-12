@@ -1,0 +1,16 @@
+﻿{ "NAME" : "SUBROUTINE", "COMMAND" : 
+	{ 
+		"SUBROUTINE_NAME" : "SUB.DEMOLINKAR" ,
+		"NUMBER_OF_ARGUMENTS" : "3" ,
+		"ARGUMENTS" : 
+		[ 
+			{ "ARGUMENT" : "" } ,
+			{ "ARGUMENT" : "" } ,
+			{ "ARGUMENT" : "" } 
+		] ,
+		"CUSTOM_VARS" : "" ,
+		"OUTPUT_FORMAT" : "JSON"
+	},
+	"FREETEXT": "",
+	"LANGUAGE": ""
+}

@@ -1,0 +1,9 @@
+﻿{ "NAME" : "DICTIONARIES", "COMMAND" : 
+	{ 
+		"FILE_NAME" : "" ,
+		"CUSTOM_VARS" : "" ,
+		"OUTPUT_FORMAT" : "JSON"
+	},
+	"FREETEXT": "",
+	"LANGUAGE": ""
+}

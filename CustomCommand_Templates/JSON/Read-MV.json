@@ -1,0 +1,15 @@
+﻿{ "NAME" : "READ", "COMMAND" : 
+	{ 
+		"CALCULATED" : "False" ,
+		"CONVERSION" : "False" ,
+		"FORMAT_SPEC" : "False" ,
+		"ORIGINAL_RECORDS" : "False" ,
+		"CUSTOM_VARS" : "" ,
+		"OUTPUT_FORMAT" : "MV" ,
+		"FILE_NAME" : "" ,
+		"DICT_CLAUSE" : "",
+		"RECORDS": ""
+	},
+	"FREETEXT": "",
+	"LANGUAGE": ""
+}

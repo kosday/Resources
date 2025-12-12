@@ -1,0 +1,9 @@
+﻿{ "NAME" : "EXECUTE", "COMMAND" : 
+	{ 
+		"STATEMENT" : "" ,
+		"CUSTOM_VARS" : "" ,
+		"OUTPUT_FORMAT" : "JSON"
+	},
+	"FREETEXT": "",
+	"LANGUAGE": ""
+}
